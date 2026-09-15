@@ -1,10 +1,10 @@
-const CACHE_NAME = 'raspisanie-v2-mfa';
+const CACHE_NAME = 'raspisanie-v3-fast';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.json',
   './icon.svg',
-  './assets/index-LK-t_VRV.js',
+  './assets/index-DEMv-5S0.js',
   './assets/index-DX4jnB_O.css',
 ];
 
