@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2257d6" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Моё расписание" />
+    <meta name="description" content="Личное расписание ВГУ" />
+    <title>Моё расписание ВГУ</title>
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./assets/index-JXtC_pad.css" />
+    <script type="module" src="./assets/index-D4w92vLI.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
