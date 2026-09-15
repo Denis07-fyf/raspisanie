@@ -1,11 +1,11 @@
-const CACHE_NAME = 'raspisanie-v1';
+const CACHE_NAME = 'raspisanie-v2-mfa';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.json',
   './icon.svg',
-  './assets/index-D4w92vLI.js',
-  './assets/index-JXtC_pad.css',
+  './assets/index-LK-t_VRV.js',
+  './assets/index-DX4jnB_O.css',
 ];
 
 self.addEventListener('install', event => {
