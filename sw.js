@@ -1,4 +1,4 @@
-const CACHE_NAME = 'raspisanie-v3-fast';
+const CACHE_NAME = 'raspisanie-v4-local';
 const APP_FILES = [
   './',
   './index.html',
@@ -26,18 +26,39 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+
+  // Запросы к Supabase не проводим через офлайн-кэш приложения.
+  if (url.origin !== self.location.origin) return;
+
+  const updateCache = fetch(event.request).then(response => {
+    if (response.ok) {
+      const copy = response.clone();
+      void caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+    }
+    return response;
+  });
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      caches.match('./index.html').then(cached => {
+        if (cached) {
+          event.waitUntil(updateCache.catch(() => undefined));
+          return cached;
+        }
+        return updateCache.catch(() => caches.match('./index.html'));
+      })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(cached => {
-      const fresh = fetch(event.request)
-        .then(response => {
-          if (response.ok && new URL(event.request.url).origin === self.location.origin) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-          }
-          return response;
-        })
-        .catch(() => cached);
-      return cached || fresh;
+      if (cached) {
+        event.waitUntil(updateCache.catch(() => undefined));
+        return cached;
+      }
+      return updateCache;
     })
   );
 });
