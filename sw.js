@@ -1,11 +1,11 @@
-const CACHE_NAME = 'raspisanie-v5-gaps';
+const CACHE_NAME = 'raspisanie-v6-editable-gaps';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.json',
   './icon.svg',
-  './assets/index-BzV3BJk3.js',
-  './assets/index-DWRmhtTD.css',
+  './assets/index-DoYqBb8D.js',
+  './assets/index-3al35bdB.css',
 ];
 
 self.addEventListener('install', event => {
