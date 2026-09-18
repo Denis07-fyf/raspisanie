@@ -1,11 +1,11 @@
-const CACHE_NAME = 'raspisanie-v4-local';
+const CACHE_NAME = 'raspisanie-v5-gaps';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.json',
   './icon.svg',
-  './assets/index-DEMv-5S0.js',
-  './assets/index-DX4jnB_O.css',
+  './assets/index-BzV3BJk3.js',
+  './assets/index-DWRmhtTD.css',
 ];
 
 self.addEventListener('install', event => {
